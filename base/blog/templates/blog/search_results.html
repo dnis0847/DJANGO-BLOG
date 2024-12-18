@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="main-content">
+  <div class="section">
+    <h2 class="post-title">Результаты поиска для "{{ query }}"</h2>
+    
+    {% if results %}
+      <ul class="post-list">
+        {% for post in results %}
+          <li class="post-card">
+            <div class="post-content">
+              <h3 class="post-card-title">
+                <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+              </h3>
+              <p class="post-excerpt">{{ post.content|truncatewords:30 }}</p>
+              <div class="post-meta">
+                <span>{{ post.publish|date:"j F Y" }}</span>
+                <span>{{ post.author }}</span>
+              </div>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="post-excerpt">Ничего не найдено.</p>
+    {% endif %}
+  </div>
+  
+  <div class="sidebar">
+    <h2>Популярные теги</h2>
+    <ul>
+      <li><a href="#">Технологии</a></li>
+      <li><a href="#">Путешествия</a></li>
+      <li><a href="#">Еда</a></li>
+      <li><a href="#">Здоровье</a></li>
+    </ul>
+  </div>
+</div>
+{% endblock %}
+

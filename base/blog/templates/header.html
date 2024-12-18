@@ -1,0 +1,37 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Мой Блог</title>
+    {% block extra_style %}
+      <style></style>
+    {% endblock %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/nord-darker.css' %}" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-container">
+        <a href="/" class="logo">Мой Блог</a>
+        <nav class="nav-menu">
+          <a href="/">Главная</a>
+          <a href="/blog">Блог</a>
+          <a href="/contacts">Контакты</a>
+          <a href="/about">О нас</a>
+        </nav>
+        <form method="get" action="{% url 'search' %}" class="search-form">
+          <input type="search" name="q" placeholder="Поиск..." required />
+          <button type="submit">Поиск</button>
+        </form>
+        <div class="burger-menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </header>
+  </body>
+</html>

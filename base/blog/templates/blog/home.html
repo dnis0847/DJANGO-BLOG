@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  {% include "../hero.html" %}
+
+  <main class="main-content">
+    <div class="content">
+      <section class="section">
+        <h2>О нас</h2>
+        <p>Добро пожаловать в наш блог! Здесь мы делимся интересными историями и статьями на различные темы.</p>
+      </section>
+
+      <section class="section">
+        <h2>Популярные посты</h2>
+        <ul class="post-list">
+          {% for popular_post in popular_posts %}
+            <li>
+              <a href="{{ popular_post.get_absolute_url }}">{{ popular_post.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>Последние посты</h2>
+        <ul class="post-list">
+          {% for latest_post in latest_posts %}
+            <li>
+              <a href="{{ latest_post.get_absolute_url }}">{{ latest_post.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </section>
+    </div>
+
+    <aside>
+      <section class="section">
+        <h2>Категории</h2>
+        <ul class="post-list">
+          {% for category in categories %}
+            <li>
+              <a href="{{ category.get_absolute_url }}">{{ category.name }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </section>
+
+    </aside>
+  </main>
+{% endblock %}

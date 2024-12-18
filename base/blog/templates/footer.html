@@ -1,0 +1,50 @@
+{% load static %}
+
+<footer class="footer">
+  <div class="footer-container">
+    <div>
+      <h3>Контакты</h3>
+      {% for contact in contacts %}
+        <p>Email: {{ contact.email }}</p>
+        <p>Телефон: {{ contact.phone }}</p>
+      {% endfor %}
+    </div>
+
+    <div>
+      <h3>Подписка</h3>
+      <form class="subscribe-form" action="{% url 'subscribe' %}" method="post">
+        {% csrf_token %}
+        <input type="email" name="email" placeholder="Ваш email" required />
+        <button type="submit">Подписаться</button>
+      </form>
+    </div>
+
+    <div>
+      <h3>Соцсети</h3>
+      <div class="social-links">
+        {% for item in social %}
+          <a href="{{ item.link }}">{{ item.name }}</a>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div>
+      <h3>Карта сайта</h3>
+      <ul class="post-list">
+        <li>
+          <a href="/">Главная</a>
+        </li>
+        <li>
+          <a href="/blog">Блог</a>
+        </li>
+        <li>
+          <a href="/contacts">Контакты</a>
+        </li>
+        <li>
+          <a href="/about">О нас</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <script src="{% static '/js/script.js' %}"></script>
+</footer>

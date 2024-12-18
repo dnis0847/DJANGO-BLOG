@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<main class="main-content">
+    <div class="content">
+        <h1>#{{ tag.name }}</h1>
+        <div class="blog-grid">
+            {% for post in posts %}
+                <article class="post-card">
+                    <img src="{{ post.image.url }}" alt="{{ post.title }}" class="post-card-image">
+                    <div class="post-content">
+                        <span class="post-category">{{ post.category }}</span>
+                        <h2 class="post-card-title"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+                        <p class="post-excerpt">{{ post.content|truncatechars:50 }}</p>
+                        <div class="post-meta">
+                            <span>Автор: {{ post.author }}</span>
+                            <span>{{ post.publish|date:"j F Y" }}</span>
+                        </div>
+                    </div>
+                </article>
+            {% endfor %}
+            <!-- Add more post cards as needed -->
+        </div>
+    </div>
+
+    {% include "../sidebar.html" %} 
+
+</main>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% block sidebar %}
+  <aside class="sidebar">
+    <section class="section">
+      <h2>Категории</h2>
+      <ul>
+        {% for category in categories %}
+          <li>
+            <a href="{{ category.get_absolute_url }}">{{ category.name }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Популярные посты</h2>
+      <ul>
+        {% for popular_post in popular_posts %}
+          <li>
+            <a href="{{ popular_post.get_absolute_url }}">{{ popular_post.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </section>
+  </aside>
+{% endblock %}
